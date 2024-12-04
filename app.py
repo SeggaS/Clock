@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 import datetime
 
@@ -9,4 +10,5 @@ def show_time():
     return f"<h1>Текущее время: {current_time}</h1>"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Получить порт из переменной окружения
+    app.run(host="0.0.0.0", port=port)        # Слушать на всех интерфейсах
